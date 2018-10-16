@@ -138,7 +138,7 @@ class ElectrumWindow(App):
         self.send_screen.set_URI(uri)
 
     def on_new_intent(self, intent):
-        if intent.getScheme() != 'bitcoin':
+        if intent.getScheme() != 'fujicoin':
             return
         uri = intent.getDataString()
         self.set_URI(uri)
@@ -273,7 +273,7 @@ class ElectrumWindow(App):
         self.daemon = self.gui_object.daemon
         self.fx = self.daemon.fx
 
-        self.use_rbf = config.get('use_rbf', True)
+        self.use_rbf = config.get('use_rbf', False)
         self.use_change = config.get('use_change', True)
         self.use_unconfirmed = not config.get('confirmed_only', False)
 
@@ -318,7 +318,7 @@ class ElectrumWindow(App):
         if is_address(data):
             self.set_URI(data)
             return
-        if data.startswith('bitcoin:'):
+        if data.startswith('fujicoin:'):
             self.set_URI(data)
             return
         # try to decode transaction
@@ -473,7 +473,7 @@ class ElectrumWindow(App):
         self.fiat_unit = self.fx.ccy if self.fx.is_enabled() else ''
         # default tab
         self.switch_to('history')
-        # bind intent for bitcoin: URI scheme
+        # bind intent for fujicoin: URI scheme
         if platform == 'android':
             from android import activity
             from jnius import autoclass
