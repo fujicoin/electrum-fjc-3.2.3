@@ -19,6 +19,7 @@ build_dll() {
 }
 
 
+mkdir -p /tmp/electrum-build
 cd /tmp/electrum-build
 
 if [ ! -d secp256k1 ]; then

@@ -25,13 +25,19 @@ Usage:
 For example:
 
 ```
-$ sudo apt-get install wine-development dirmngr gnupg2 p7zip-full
-$ sudo apt-get install mingw-w64 autotools-dev autoconf libtool
+sudo su -
+apt-get install wine-development dirmngr gnupg2 p7zip-full
+apt-get install mingw-w64 autotools-dev autoconf libtool
 ```
 
-The binaries are also built by Travis CI, so if you are having problems,
-[that script](https://github.com/spesmilo/electrum/blob/master/.travis.yml) might help.
+2. Compile
 
-2. Make sure `/opt` is writable by the current user.
-3. Run `build.sh`.
-4. The generated binaries are in `./dist`.
+```
+git clone https://github.com/fujicoin/electrum-fjc.git 
+cd electrum-fjc/contrib/build-wine
+./build-secp256k1.sh
+./prepare-wine.sh
+./build-electrum-git.sh
+```
+
+The generated binaries are in `./dist`.

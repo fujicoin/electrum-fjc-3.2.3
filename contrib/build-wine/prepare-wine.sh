@@ -86,6 +86,7 @@ wine 'wineboot'
 rm -f /opt/wine-stable/lib/wine/fakedlls/api-ms-win-core-path-l1-1-0.dll
 rm -f /opt/wine-stable/lib/wine/api-ms-win-core-path-l1-1-0.dll.so
 
+mkdir -p /tmp/electrum-build
 cd /tmp/electrum-build
 
 # Install Python
