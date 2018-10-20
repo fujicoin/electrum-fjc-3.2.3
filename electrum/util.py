@@ -584,10 +584,12 @@ def time_difference(distance_in_time, include_seconds):
         return "over %d years" % (round(distance_in_minutes / 525600))
 
 mainnet_block_explorers = {
-    'explorer.fujicoin.org': ('http://explorer.fujicoin.org/',
+    'fujicoin.org': ('https://explorer.fujicoin.org/',
                         {'tx': 'tx/', 'addr': 'address'}),
-    'system default': ('blockchain:',
-                        {'tx': 'tx', 'addr': 'address'}),
+    'cryptoID': ('https://chainz.cryptoid.info/',
+                        {'tx': 'fjc/tx.dws?', 'addr': 'address'}),
+    'system default': ('https://chainz.cryptoid.info/',
+                        {'tx': 'fjc/tx.dws?', 'addr': 'address'}),
 }
 
 testnet_block_explorers = {
@@ -602,7 +604,7 @@ def block_explorer_info():
     return testnet_block_explorers if constants.net.TESTNET else mainnet_block_explorers
 
 def block_explorer(config):
-    return config.get('block_explorer', 'explorer.fujicoin.org')
+    return config.get('block_explorer', 'system default')
 
 def block_explorer_tuple(config):
     return block_explorer_info().get(block_explorer(config))
